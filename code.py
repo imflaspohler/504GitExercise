@@ -1,16 +1,31 @@
-def function1(a):
-    b = dict()
-    for c in a:
-        if c not in b:
-            b[c] = 1
+def count_frequencies(sequence):
+    """
+    Count the frequency of each character in the given sequence.
+
+    Args:
+        sequence (str): The input sequence of characters.
+
+    Returns:
+        dict: A dictionary with characters as keys and their frequencies as values.
+    """
+    frequency_dict = {}
+    for char in sequence:
+        if char not in frequency_dict:
+            frequency_dict[char] = 1
         else:
-            b[c] += 1
-    return b
+            frequency_dict[char] += 1
+    return frequency_dict
 
-def function2(a):
-    print('freqs')
-    total = float(sum([a[b] for b in a.keys()]))
-    for b in a.keys():
-        print(b + ':' + str(a[b]/total))
+def print_frequencies(frequency_dict):
+    """
+    Print the relative frequencies of characters in the given frequency dictionary.
 
-function2(function1('ATCTGACGCGCGCCGC'))
+    Args:
+        frequency_dict (dict): A dictionary with characters as keys and their frequencies as values.
+    """
+    print('Frequencies:')
+    total_count = float(sum(frequency_dict.values()))
+    for char, count in frequency_dict.items():
+        print(f'{char}: {count / total_count:.3f}')
+
+print_frequencies(count_frequencies('ATCTGACGCGCGCCGC'))
